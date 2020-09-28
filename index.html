@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				height: 100vh;
+				width: 100vw;
+				overflow: hidden;
+				font-size: 50px;
+			}
+			#container {
+				display: grid;
+				height: 100%;
+				width: 100%;
+				column-gap: 10px;
+				row-gap: 10px;
+				grid-template-columns: repeat(4, 1fr);
+				max-height: 95vh;
+				overflow-y: auto;
+				box-sizing: border-box;
+			}
+			#container .child {
+				border: solid 1px red;
+				height: 260px;
+				width: 98%;
+				align-self: stretch;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+	</body>
+	<!--  -->
+	<script type="text/javascript" src="src/js.js"></script>
+	<!--  -->
+	<script type="text/javascript">
+		//
+		const container = document.querySelector('#container');
+		//
+		for ( var i = 1; i <=25; i++ ) {
+			let child = document.createElement('span');
+			child.classList.add('child');
+			child.innerHTML = 'ads';
+			container.appendChild(child);
+		}
+		const inf = new InfinityScroll({
+			el: '#container', // selector or object
+			dataPath: 'https://jsonplaceholder.typicode.com/comments',
+			onRequestSuccess: function( data ) {
+				//
+				for ( var i = 1; i <= 25; i++ ) {
+					let child = document.createElement('span');
+					child.classList.add('child');
+					child.innerHTML = 'ads';
+					container.appendChild(child);
+				}
+			}
+		});
+	</script>
+</html>
