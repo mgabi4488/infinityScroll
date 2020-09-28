@@ -33,6 +33,7 @@
 		</style>
 	</head>
 	<body>
+		<button id="button" style="position: absolute;">Click To Add</button>
 		<div id="container"></div>
 	</body>
 	<!--  -->
@@ -51,6 +52,11 @@
 		const inf = new InfinityScroll({
 			el: '#container', // selector or object
 			dataPath: 'https://jsonplaceholder.typicode.com/comments',
+			triggerEvent: 'scroll',
+			customController: {
+				el: '#button',
+				triggerEvent: 'click'
+			},
 			onRequestSuccess: function( data ) {
 				//
 				for ( var i = 1; i <= 25; i++ ) {
@@ -61,5 +67,6 @@
 				}
 			}
 		});
+
 	</script>
 </html>
