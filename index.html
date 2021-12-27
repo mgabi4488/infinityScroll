@@ -42,11 +42,12 @@
 	<script type="text/javascript">
 		//
 		const container = document.querySelector('#container');
+		let index = 1;
 		//
-		for ( var i = 1; i <=25; i++ ) {
+		for ( var i = 1; i <= 25; i++, index++ ) {
 			let child = document.createElement('span');
 			child.classList.add('child');
-			child.innerHTML = 'ads';
+			child.innerHTML = 'Item' + index;
 			container.appendChild(child);
 		}
 		const inf = new InfinityScroll({
@@ -59,10 +60,10 @@
 			},
 			onRequestSuccess: function( data ) {
 				//
-				for ( var i = 1; i <= 25; i++ ) {
+				for ( var i = 1; i <= 25; i++, index++ ) {
 					let child = document.createElement('span');
 					child.classList.add('child');
-					child.innerHTML = 'Item' + i;
+					child.innerHTML = 'Item' + index;
 					container.appendChild(child);
 				}
 			}
